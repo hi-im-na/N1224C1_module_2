@@ -1,5 +1,8 @@
 package ss1_oop_overview.practice;
 
+import utils.CheckInputType;
+import utils.InputCommon;
+
 import java.util.Scanner;
 
 class Student {
@@ -7,18 +10,18 @@ class Student {
     String name;
     double score;
 
-    public void input() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter student id: ");
-        id = Integer.parseInt(scanner.nextLine());
-        System.out.println("Enter student name: ");
-        name = scanner.nextLine();
-        System.out.println("Enter student score: ");
-        score = Double.parseDouble(scanner.nextLine());
-        scanner.close();
+    public void input(InputCommon ic) {
+        System.out.println(" ===================== ");
+        System.out.print("Enter student id: ");
+        id = ic.checkInputInt(CheckInputType.MIN, 1);
+        System.out.print("Enter student name: ");
+        name = ic.checkInputString();
+        System.out.print("Enter student score: ");
+        score = ic.checkInputDouble(CheckInputType.MIN, 0);
     }
 
     public void display() {
+        System.out.println(" ===================== ");
         System.out.println("Student id: " + id);
         System.out.println("Student name: " + name);
         System.out.println("Student score: " + score);

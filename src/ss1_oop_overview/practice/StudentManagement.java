@@ -16,7 +16,7 @@ class StudentManagement {
             Student student;
             for (int i = 0; i < n; i++) {
                 student = new Student();
-                student.input();
+                student.input(ic);
                 studentList.add(student);
             }
 

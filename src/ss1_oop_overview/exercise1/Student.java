@@ -1,21 +1,19 @@
 package ss1_oop_overview.exercise1;
 
-import java.util.Scanner;
+import utils.InputCommon;
 
 class Student {
     String name;
     double mathScore;
     double literatureScore;
 
-    void input() {
-        Scanner scanner = new Scanner(System.in);
+    void input(InputCommon ic) {
         System.out.println("Enter student name: ");
-        name = scanner.nextLine();
+        name = ic.checkInputString();
         System.out.println("Enter math score: ");
-        mathScore = Double.parseDouble(scanner.nextLine());
+        mathScore = ic.checkInputDouble();
         System.out.println("Enter literature score: ");
-        literatureScore = Double.parseDouble(scanner.nextLine());
-        scanner.close();
+        literatureScore = ic.checkInputDouble();
     }
 
     public int calculateAverageScore() {
