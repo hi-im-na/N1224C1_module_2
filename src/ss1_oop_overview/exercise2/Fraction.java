@@ -30,7 +30,12 @@ public class Fraction {
     }
 
     public void output() {
-        System.out.println(numerator + "/" + denominator);
+        Fraction f = reduce(this);
+        if (f.denominator == 1) {
+            System.out.println(f.numerator);
+        } else {
+            System.out.println(f.numerator + "/" + f.denominator);
+        }
     }
 
     public Fraction reduce(Fraction f) {
@@ -47,31 +52,31 @@ public class Fraction {
     }
 
     public Fraction add(Fraction f) {
-        Fraction result = new Fraction();
-        result.numerator = numerator * f.denominator + f.numerator * denominator;
-        result.denominator = denominator * f.denominator;
-        return reduce(result);
+        this.numerator = this.numerator * f.denominator + f.numerator * this.denominator;
+        this.denominator *= f.denominator;
+        reduce(this);
+        return this;
     }
 
     public Fraction subtract(Fraction f) {
-        Fraction result = new Fraction();
-        result.numerator = numerator * f.denominator - f.numerator * denominator;
-        result.denominator = denominator * f.denominator;
-        return reduce(result);
+        this.numerator = this.numerator * f.denominator - f.numerator * this.denominator;
+        this.denominator *= f.denominator;
+        reduce(this);
+        return this;
     }
 
     public Fraction multiply(Fraction f) {
-        Fraction result = new Fraction();
-        result.numerator = numerator * f.numerator;
-        result.denominator = denominator * f.denominator;
-        return reduce(result);
+        this.numerator *= f.numerator;
+        this.denominator *= f.denominator;
+        reduce(this);
+        return this;
     }
 
     public Fraction divide(Fraction f) {
-        Fraction result = new Fraction();
-        result.numerator = numerator * f.denominator;
-        result.denominator = denominator * f.numerator;
-        return reduce(result);
+        this.numerator *= f.denominator;
+        this.denominator *= f.numerator;
+        reduce(this);
+        return this;
     }
 
     public void checkYinYang() {
@@ -85,7 +90,23 @@ public class Fraction {
         }
     }
 
+    public Fraction copy() {
+        return new Fraction(numerator, denominator);
+    }
+
+    public Fraction add(int n) {
+        Fraction f = new Fraction(n);
+        return this.add(f);
+    }
+
     public Fraction() {
+        this.numerator = 0;
+        this.denominator = 1;
+    }
+
+    public Fraction(int numerator) {
+        this.numerator = numerator;
+        this.denominator = 1;
     }
 
     public Fraction(int numerator, int denominator) {
