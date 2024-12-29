@@ -1,23 +1,21 @@
 package ss1_oop_overview.practice;
 
-import utils.CheckInputType;
-import utils.InputCommon;
-
-import java.util.Scanner;
+import utils.InputCommonV2;
+import utils.enums.CheckInputLimit;
 
 class Student {
     int id;
     String name;
     double score;
 
-    public void input(InputCommon ic) {
+    public void input(InputCommonV2 ic) {
         System.out.println(" ===================== ");
         System.out.print("Enter student id: ");
-        id = ic.checkInputInt(CheckInputType.MIN, 1);
+        id = ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 1);
         System.out.print("Enter student name: ");
         name = ic.checkInputString();
         System.out.print("Enter student score: ");
-        score = ic.checkInputDouble(CheckInputType.MIN, 0);
+        score = ic.checkNumberInput(Double.class, CheckInputLimit.MIN, 0D);
     }
 
     public void display() {

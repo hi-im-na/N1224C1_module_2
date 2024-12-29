@@ -1,16 +1,16 @@
 package ss1_oop_overview.practice;
 
-import utils.CheckInputType;
-import utils.InputCommon;
+import utils.InputCommonV2;
+import utils.enums.CheckInputLimit;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class StudentManagement {
     public static void main(String[] args) {
-        try (InputCommon ic = new InputCommon()) {
+        try (InputCommonV2 ic = new InputCommonV2()) {
             System.out.print("Nhap so sinh vien muon nhap: ");
-            int n = ic.checkInputInt(CheckInputType.MIN, 1);
+            int n = ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 1);
 
             List<Student> studentList = new ArrayList<>();
             Student student;

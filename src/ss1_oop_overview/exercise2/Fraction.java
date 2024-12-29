@@ -1,6 +1,6 @@
 package ss1_oop_overview.exercise2;
 
-import utils.InputCommon;
+import utils.InputCommonV2;
 import utils.MathSolve;
 
 import java.util.List;
@@ -16,11 +16,11 @@ public class Fraction {
      */
     private int denominator;
 
-    public void input(InputCommon ic) {
+    public void input(InputCommonV2 ic) {
         System.out.print("Nhap tu so: ");
-        numerator = ic.checkInputInt();
+        numerator = ic.checkNumberInput(Integer.class);
         System.out.print("Nhap mau so: ");
-        denominator = ic.checkInputInt(Integer.MIN_VALUE, Integer.MAX_VALUE, List.of(0));
+        denominator = ic.checkNumberInput(Integer.class, Integer.MIN_VALUE, Integer.MAX_VALUE, List.of(0));
 
         //rut gon phan so
         Fraction f = reduce(this);

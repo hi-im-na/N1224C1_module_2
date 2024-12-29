@@ -1,11 +1,11 @@
 package ss1_oop_overview.exercise2;
 
-import utils.InputCommon;
+import utils.InputCommonV2;
 
 public class MainEx2 {
     public static void main(String[] args) {
         Fraction fraction = new Fraction();
-        try (InputCommon ic = new InputCommon()) {
+        try (InputCommonV2 ic = new InputCommonV2()) {
             fraction.input(ic);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());

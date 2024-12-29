@@ -1,6 +1,6 @@
 package ss1_oop_overview.exercise3;
 
-import utils.InputCommon;
+import utils.InputCommonV2;
 
 public class Point {
     private int x;
@@ -14,11 +14,11 @@ public class Point {
         this.y = y;
     }
 
-    public void input(InputCommon ic) {
+    public void input(InputCommonV2 ic) {
         System.out.print("Enter x: ");
-        x = ic.checkInputInt();
+        x = ic.checkNumberInput(Integer.class);
         System.out.print("Enter y: ");
-        y = ic.checkInputInt();
+        y = ic.checkNumberInput(Integer.class);
     }
 
     public void display() {
