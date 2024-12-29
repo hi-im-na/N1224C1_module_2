@@ -26,6 +26,24 @@ public class InputCommonV2 implements AutoCloseable {
     }
 
     /**
+     * Check input string with regex
+     *
+     * @param regex a regular expression
+     * @return a string that matches the regex
+     */
+    public String checkInputString(String regex) {
+        String input;
+        while (true) {
+            input = sc.nextLine();
+            if (input == null || input.trim().isEmpty() || !input.matches(regex)) {
+                System.err.print("Invalid input. Must match the pattern " + regex + ". Please enter again: ");
+            } else {
+                return input;
+            }
+        }
+    }
+
+    /**
      * Check input number
      *
      * @return a number of type T
