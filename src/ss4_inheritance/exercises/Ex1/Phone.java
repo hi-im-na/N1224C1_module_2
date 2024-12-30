@@ -1,6 +1,7 @@
 package ss4_inheritance.exercises.Ex1;
 
 import utils.InputCommonV2;
+import utils.enums.CheckInputLimit;
 
 public abstract class Phone {
 
@@ -17,7 +18,17 @@ public abstract class Phone {
 
     public abstract void display();
 
-    public abstract void editInfo(InputCommonV2 ic);
+    public void editInfo(InputCommonV2 ic) {
+        System.out.println("----------------------");
+        System.out.print("Input phone name: ");
+        setName(ic.checkInputString());
+        System.out.print("Input phone price: ");
+        setPrice(ic.checkNumberInput(Double.class, CheckInputLimit.MIN, 0D));
+        System.out.print("Input phone warranty year: ");
+        setWarrantyYear(ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 0));
+        System.out.print("Input phone brand: ");
+        setBrand(ic.checkEnumInput(Brand.class));
+    }
 
     public Phone() {
     }
