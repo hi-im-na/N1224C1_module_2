@@ -5,7 +5,6 @@ import utils.enums.CheckInputLimit;
 
 public abstract class Phone {
 
-
     public enum Brand {
         SAMSUNG, IPHONE
     }
@@ -17,6 +16,8 @@ public abstract class Phone {
     private Brand brand;
 
     public abstract void display();
+
+    public abstract double calculateTotalPrice();
 
     public void editInfo(InputCommonV2 ic) {
         System.out.println("----------------------");
