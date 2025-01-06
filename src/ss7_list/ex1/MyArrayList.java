@@ -1,14 +1,18 @@
 package ss7_list.ex1;
 
-public class MyArrayList {
+public class MyArrayList<E> {
     private int size = 0;
     private static int capacity = 10;
-    private int[] arr = new int[capacity];
+    private Object[] arr = new Object[capacity];
 
     public MyArrayList() {
     }
 
-    public void add(int element) {
+    public int size() {
+        return size;
+    }
+
+    public void add(E element) {
         upsizeIfArrIsFull();
         arr[size] = element;
         size++;
@@ -23,7 +27,7 @@ public class MyArrayList {
         return result.toString();
     }
 
-    public void add(int index, int element) {
+    public void add(int index, E element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
@@ -44,14 +48,14 @@ public class MyArrayList {
         arr[index] = element;
     }
 
-    public int get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
-        return arr[index];
+        return (E) arr[index];
     }
 
-    public int indexOf(int element) {
+    public int indexOf(E element) {
         for (int i = 0; i < size; i++) {
             if (arr[i] == element) {
                 return i;
@@ -60,7 +64,7 @@ public class MyArrayList {
         return -1;
     }
 
-    public int lastIndexOf(int element) {
+    public int lastIndexOf(E element) {
         for (int i = size - 1; i >= 0; i--) {
             if (arr[i] == element) {
                 return i;
@@ -80,7 +84,7 @@ public class MyArrayList {
         size--;
     }
 
-    public void removeElement(int element) {
+    public void removeElement(E element) {
         for (int i = size - 1; i >= 0; i--) {
             if (arr[i] == element) {
                 remove(i);
@@ -91,7 +95,7 @@ public class MyArrayList {
     private void upsizeIfArrIsFull() {
         if (size == capacity) {
             capacity *= 1.5;
-            int[] newElements = new int[capacity];
+            Object[] newElements = new Object[capacity];
             for (int i = 0; i < size; i++) {
                 newElements[i] = arr[i];
             }

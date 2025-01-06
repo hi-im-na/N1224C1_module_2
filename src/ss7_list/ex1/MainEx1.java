@@ -2,7 +2,7 @@ package ss7_list.ex1;
 
 public class MainEx1 {
     public static void main(String[] args) {
-        MyArrayList list = new MyArrayList();
+        MyArrayList<Integer> list = new MyArrayList<>();
 
         list.add(10);
         list.add(20);
@@ -12,13 +12,13 @@ public class MainEx1 {
         list.add(30);
         list.add(30);
 
-        System.out.println("List init: " + list.toString());
+        System.out.println("List init: " + list);
 
         list.add(2, 25);
-        System.out.println("List after add(2, 25): " + list.toString());
+        System.out.println("List after add(2, 25): " + list);
 
         list.set(3, 35);
-        System.out.println("List after set(3, 35): " + list.toString());
+        System.out.println("List after set(3, 35): " + list);
 
         System.out.println("Element at index 4: " + list.get(4));
 
@@ -38,9 +38,9 @@ public class MainEx1 {
         }
 
         list.remove(1);
-        System.out.println("List after remove(1): " + list.toString());
+        System.out.println("List after remove(1): " + list);
 
         list.removeElement(30);
-        System.out.println("List after removeElement(30): " + list.toString());
+        System.out.println("List after removeElement(30): " + list);
     }
 }

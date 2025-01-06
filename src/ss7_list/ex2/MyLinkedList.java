@@ -1,11 +1,20 @@
 package ss7_list.ex2;
 
-public class MyLinkedList {
+public class MyLinkedList<E> {
+    private class Node {
+        private E data;
+        private Node next;
+
+        public Node(E data) {
+            this.data = data;
+        }
+    }
+
     private Node head;
     private Node tail;
     private int size = 0;
 
-    public void addFirst(int element) {
+    public void addFirst(E element) {
         if (size == 0) {
             head = tail = new Node(element);
         } else {
@@ -16,6 +25,7 @@ public class MyLinkedList {
         size++;
     }
 
+    @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
         Node current = head;
@@ -26,7 +36,7 @@ public class MyLinkedList {
         return result.toString();
     }
 
-    public void addLast(int element) {
+    public void addLast(E element) {
         if (size == 0) {
             head = tail = new Node(element);
         } else {
@@ -37,7 +47,7 @@ public class MyLinkedList {
         size++;
     }
 
-    public void add(int index, int element) {
+    public void add(int index, E element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
@@ -58,7 +68,7 @@ public class MyLinkedList {
         }
     }
 
-    public int removeFirst() {
+    public E removeFirst() {
         if (size == 0) {
             throw new IndexOutOfBoundsException("Index: 0, Size: 0");
         }
@@ -73,7 +83,7 @@ public class MyLinkedList {
         return current.data;
     }
 
-    public int removeLast() {
+    public E removeLast() {
         if (size == 0) {
             throw new IndexOutOfBoundsException("Index: 0, Size: 0");
         }
@@ -111,7 +121,7 @@ public class MyLinkedList {
         }
     }
 
-    public int getFirst() {
+    public E getFirst() {
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
@@ -119,7 +129,7 @@ public class MyLinkedList {
         return head.data;
     }
 
-    public int getLast() {
+    public E getLast() {
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
@@ -127,7 +137,7 @@ public class MyLinkedList {
         return tail.data;
     }
 
-    public int get(int index) {
+    public E get(int index) {
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
@@ -140,7 +150,7 @@ public class MyLinkedList {
         return current.data;
     }
 
-    public void set(int index, int element) {
+    public void set(int index, E element) {
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
@@ -152,7 +162,7 @@ public class MyLinkedList {
         current.data = element;
     }
 
-    public int indexOf(int element) {
+    public int indexOf(E element) {
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
@@ -166,7 +176,7 @@ public class MyLinkedList {
         return -1;
     }
 
-    public int lastIndexOf(int element) {
+    public int lastIndexOf(E element) {
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
@@ -178,5 +188,9 @@ public class MyLinkedList {
             current = current.next;
         }
         return -1;
+    }
+
+    public int size() {
+        return size;
     }
 }
