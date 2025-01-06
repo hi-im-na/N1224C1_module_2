@@ -3,7 +3,7 @@ package ss4_inheritance.exercises.Ex1;
 import utils.InputCommonV2;
 import utils.enums.CheckInputLimit;
 
-public abstract class Phone {
+public abstract class Phone implements Comparable<Phone> {
 
     public enum Brand {
         SAMSUNG, IPHONE
@@ -29,6 +29,11 @@ public abstract class Phone {
         setWarrantyYear(ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 0));
         System.out.print("Input phone brand: ");
         setBrand(ic.checkEnumInput(Brand.class));
+    }
+
+    @Override
+    public int compareTo(Phone o) {
+        return Double.compare(this.getPrice(), o.getPrice());
     }
 
     public Phone() {

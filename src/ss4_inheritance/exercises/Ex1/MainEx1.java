@@ -195,10 +195,12 @@ public class MainEx1 {
                 case 1 -> {
                     System.out.println("Sắp xếp tăng dần!");
                     phoneList.sort(Comparator.comparingDouble(Phone::getPrice));
+//                    Collections.sort(phoneList);
                 }
                 case 2 -> {
                     System.out.println("Sắp xếp giảm dần!");
-                    phoneList.sort(Comparator.comparingDouble(Phone::getPrice).reversed());
+                    phoneList.sort((o1, o2) -> Double.compare(o2.getPrice(), o1.getPrice()));
+//                    phoneList.sort(Collections.reverseOrder());
                 }
                 case 3 -> {
                     return;
