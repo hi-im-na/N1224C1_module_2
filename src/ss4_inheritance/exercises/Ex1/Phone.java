@@ -21,21 +21,21 @@ public abstract class Phone implements Comparable<Phone> {
 
     public void editInfo(InputCommonV2 ic) {
         System.out.println("----------------------");
-        System.out.print("Input phone name: ");
+//        System.out.print("Input phone name: ");
 //        setName(ic.checkInputString());
         setName(PhoneValidation.inputName("Tên điện thoại"));
 
-        System.out.print("Input phone price: ");
+//        System.out.print("Input phone price: ");
 //        setPrice(ic.checkNumberInput(Double.class, CheckInputLimit.MIN, 0D));
-        PhoneValidation.inputPrice("Giá điện thoại");
+        setPrice(PhoneValidation.inputPrice("Giá điện thoại"));
 
-        System.out.print("Input phone warranty year: ");
+//        System.out.print("Input phone warranty year: ");
 //        setWarrantyYear(ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 0));
-        PhoneValidation.inputWarranty("Thời gian bảo hành");
+        setWarrantyYear(PhoneValidation.inputWarranty("Thời gian bảo hành"));
 
         System.out.print("Input phone brand: ");
-//        setBrand(ic.checkEnumInput(Brand.class));
-        PhoneValidation.inputManufacturer("Hãng điện thoại");
+        setBrand(ic.checkEnumInput(Brand.class));
+//        PhoneValidation.inputManufacturer("Hãng điện thoại");
     }
 
     @Override

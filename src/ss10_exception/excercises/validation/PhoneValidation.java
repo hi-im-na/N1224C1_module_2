@@ -5,93 +5,77 @@ import java.util.Scanner;
 public class PhoneValidation {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String inputName(String fieldName) {
+    private static String inputString(String fieldName) {
         while (true) {
             try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String name = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(name, fieldName);
-
-                return name;
+                System.out.print("Nhập vào " + fieldName + ": ");
+                String input = scanner.nextLine();
+                CommonValidation.validateIsEmpty(input, fieldName);
+                return input;
             } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
+//                e.printStackTrace();
+                System.err.println(e.getMessage());
+                System.err.println("Vui lòng nhập lại");
             }
         }
+    }
+
+    private static double inputDouble(String fieldName) {
+        while (true) {
+            try {
+                String input = inputString(fieldName);
+                double value = CommonValidation.parseDouble(input, fieldName);
+                CommonValidation.validateIsNegativeNumber(value, fieldName);
+                return value;
+            } catch (Exception e) {
+//                e.printStackTrace();
+                System.err.println(e.getMessage());
+                System.err.println("Vui lòng nhập lại");
+            }
+        }
+    }
+
+    private static int inputInt(String fieldName) {
+        while (true) {
+            try {
+                String input = inputString(fieldName);
+                int value = CommonValidation.parseInt(input, fieldName);
+                CommonValidation.validateIsNegativeNumber(value, fieldName);
+                return value;
+            } catch (Exception e) {
+//                e.printStackTrace();
+                System.err.println(e.getMessage());
+                System.err.println("Vui lòng nhập lại");
+            }
+        }
+    }
+
+    public static String inputName(String fieldName) {
+        return inputString(fieldName);
     }
 
     public static double inputPrice(String fieldName) {
-        while (true) {
-            try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String price = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(price, fieldName);
-                double priceDouble = CommonValidation.parseDouble(price, fieldName);
-                CommonValidation.validateIsNegativeNumber(priceDouble, fieldName);
-
-                return priceDouble;
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
-            }
-        }
+        return inputDouble(fieldName);
     }
 
     public static int inputWarranty(String fieldName) {
-        while (true) {
-            try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String warranty = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(warranty, fieldName);
-                int warrantyInt = CommonValidation.parseInt(warranty, fieldName);
-                CommonValidation.validateIsNegativeNumber(warrantyInt, fieldName);
-
-                return warrantyInt;
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
-            }
-        }
+        return inputInt(fieldName);
     }
 
     public static String inputManufacturer(String fieldName) {
-        while (true) {
-            try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String manufacturer = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(manufacturer, fieldName);
-
-                return manufacturer;
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
-            }
-        }
+        return inputString(fieldName);
     }
 
     public static Integer inputBatteryPercentage(String fieldName) {
         while (true) {
             try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String batteryPercentage = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(batteryPercentage, fieldName);
-                int batteryPercentageInt = CommonValidation.parseInt(batteryPercentage, fieldName);
-                CommonValidation.validateNumberOutOfRangeException(batteryPercentageInt, fieldName, 0, 100);
-
-                return batteryPercentageInt;
+                int value = inputInt(fieldName);
+                CommonValidation.validateNumberOutOfRangeException(value, fieldName, 0, 100);
+                return value;
             } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
+//                e.printStackTrace();
+                System.err.println(e.getMessage());
+                System.err.println("Vui lòng nhập lại");
             }
         }
     }
@@ -99,38 +83,18 @@ public class PhoneValidation {
     public static String inputDescription(String fieldName) {
         while (true) {
             try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String description = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(description, fieldName);
+                String description = inputString(fieldName);
                 CommonValidation.validateMinLength(description, fieldName, 10);
-
                 return description;
             } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
+//                e.printStackTrace();
+                System.err.println(e.getMessage());
+                System.err.println("Vui lòng nhập lại");
             }
         }
     }
 
     public static Integer inputQuantity(String fieldName) {
-        while (true) {
-            try {
-                System.out.println("Nhập vào " + fieldName + ": ");
-                String quantity = scanner.nextLine();
-
-                CommonValidation.validateIsEmpty(quantity, fieldName);
-                int quantityInt = CommonValidation.parseInt(quantity, fieldName);
-                CommonValidation.validateIsNegativeNumber(quantityInt, fieldName);
-
-                return quantityInt;
-            } catch (Exception e) {
-                e.printStackTrace();
-                System.out.println(e.getMessage());
-                System.out.println("Vui lòng nhập lại");
-            }
-        }
+        return inputInt(fieldName);
     }
-
 }

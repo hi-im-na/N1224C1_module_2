@@ -28,11 +28,11 @@ public class OldPhone extends Phone implements Promotion {
     @Override
     public void editInfo(InputCommonV2 ic) {
         super.editInfo(ic);
-        System.out.print("Input phone battery health: ");
+//        System.out.print("Input phone battery health: ");
 //        batteryHealth = ic.checkNumberInput(Integer.class, 0, 100);
         batteryHealth = PhoneValidation.inputBatteryPercentage("Tình trạng pin (%)");
 
-        System.out.print("Input phone description: ");
+//        System.out.print("Input phone description: ");
 //        description = ic.checkInputString();
         description = PhoneValidation.inputDescription("Mô tả");
     }

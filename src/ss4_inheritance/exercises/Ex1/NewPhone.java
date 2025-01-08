@@ -20,7 +20,7 @@ public class NewPhone extends Phone {
     @Override
     public void editInfo(InputCommonV2 ic) {
         super.editInfo(ic);
-        System.out.print("Input phone quantity: ");
+//        System.out.print("Input phone quantity: ");
 //        quantity = ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 1);
         quantity = PhoneValidation.inputQuantity("Số lượng");
     }
