@@ -24,6 +24,7 @@ public class MainEx1 {
             displayMainMenu();
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
+            System.err.println("Ứng dụng gặp một số lỗi không mong muốn, vui lòng thử lại sau!");
         }
         ic.close();
     }

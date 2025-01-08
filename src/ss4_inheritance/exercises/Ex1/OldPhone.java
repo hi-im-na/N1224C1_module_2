@@ -1,10 +1,11 @@
 package ss4_inheritance.exercises.Ex1;
 
+import ss10_exception.excercises.validation.PhoneValidation;
 import utils.InputCommonV2;
 
 public class OldPhone extends Phone implements Promotion {
     private static int index = 0;
-    private String batteryHealth;
+    private int batteryHealth;
     private String description;
 
     @Override
@@ -28,9 +29,12 @@ public class OldPhone extends Phone implements Promotion {
     public void editInfo(InputCommonV2 ic) {
         super.editInfo(ic);
         System.out.print("Input phone battery health: ");
-        batteryHealth = ic.checkInputString();
+//        batteryHealth = ic.checkNumberInput(Integer.class, 0, 100);
+        batteryHealth = PhoneValidation.inputBatteryPercentage("Tình trạng pin (%)");
+
         System.out.print("Input phone description: ");
-        description = ic.checkInputString();
+//        description = ic.checkInputString();
+        description = PhoneValidation.inputDescription("Mô tả");
     }
 
     public OldPhone() {
@@ -46,11 +50,11 @@ public class OldPhone extends Phone implements Promotion {
         return index;
     }
 
-    public String getBatteryHealth() {
+    public int getBatteryHealth() {
         return batteryHealth;
     }
 
-    public void setBatteryHealth(String batteryHealth) {
+    public void setBatteryHealth(int batteryHealth) {
         this.batteryHealth = batteryHealth;
     }
 

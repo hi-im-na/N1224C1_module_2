@@ -1,7 +1,7 @@
 package ss4_inheritance.exercises.Ex1;
 
+import ss10_exception.excercises.validation.PhoneValidation;
 import utils.InputCommonV2;
-import utils.enums.CheckInputLimit;
 
 public abstract class Phone implements Comparable<Phone> {
 
@@ -22,13 +22,20 @@ public abstract class Phone implements Comparable<Phone> {
     public void editInfo(InputCommonV2 ic) {
         System.out.println("----------------------");
         System.out.print("Input phone name: ");
-        setName(ic.checkInputString());
+//        setName(ic.checkInputString());
+        setName(PhoneValidation.inputName("Tên điện thoại"));
+
         System.out.print("Input phone price: ");
-        setPrice(ic.checkNumberInput(Double.class, CheckInputLimit.MIN, 0D));
+//        setPrice(ic.checkNumberInput(Double.class, CheckInputLimit.MIN, 0D));
+        PhoneValidation.inputPrice("Giá điện thoại");
+
         System.out.print("Input phone warranty year: ");
-        setWarrantyYear(ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 0));
+//        setWarrantyYear(ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 0));
+        PhoneValidation.inputWarranty("Thời gian bảo hành");
+
         System.out.print("Input phone brand: ");
-        setBrand(ic.checkEnumInput(Brand.class));
+//        setBrand(ic.checkEnumInput(Brand.class));
+        PhoneValidation.inputManufacturer("Hãng điện thoại");
     }
 
     @Override

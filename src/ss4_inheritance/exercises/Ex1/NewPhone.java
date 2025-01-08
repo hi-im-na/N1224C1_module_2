@@ -1,7 +1,7 @@
 package ss4_inheritance.exercises.Ex1;
 
+import ss10_exception.excercises.validation.PhoneValidation;
 import utils.InputCommonV2;
-import utils.enums.CheckInputLimit;
 
 public class NewPhone extends Phone {
     private static int index = 0;
@@ -21,7 +21,8 @@ public class NewPhone extends Phone {
     public void editInfo(InputCommonV2 ic) {
         super.editInfo(ic);
         System.out.print("Input phone quantity: ");
-        quantity = ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 1);
+//        quantity = ic.checkNumberInput(Integer.class, CheckInputLimit.MIN, 1);
+        quantity = PhoneValidation.inputQuantity("Số lượng");
     }
 
     public NewPhone() {
